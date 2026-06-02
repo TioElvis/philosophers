@@ -37,7 +37,7 @@ $(NAME): $(OBJS)
 	@printf "$(CYAN)$(BOLD)🔗 Linking $(NAME)...$(RESET)\n"
 	@$(COMPILER) $(FLAGS) $(OBJS) -o $(NAME)
 	@printf "$(GREEN)$(BOLD)✅ $(NAME) successfully compiled!$(RESET)\n\n"
-	@printf "$(BLACK)$(BOLD)\n"
+	@printf "\n"
 	@printf "            ________o8A888888o_                     \n"
 	@printf "        _o888888888888K_1888888o                    \n"
 	@printf "                  ~~~+8888888888o                   \n"
