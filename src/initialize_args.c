@@ -1,22 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   initialize_args.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: evera <evera@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/07 13:23:36 by evera             #+#    #+#             */
-/*   Updated: 2026/02/07 13:25:42 by evera            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "philosophers.h"
 
-static long	ft_atol(const char *str)
+static long ft_atol(const char *str)
 {
-	int		i;
-	int		sign;
-	long	result;
+	int i;
+	int sign;
+	long result;
 
 	i = 0;
 	sign = 1;
@@ -37,10 +25,10 @@ static long	ft_atol(const char *str)
 	return (result * sign);
 }
 
-static int	validate_arg(char *arg)
+static int validate_arg(char *arg)
 {
-	int		i;
-	long	number;
+	int i;
+	long number;
 
 	i = 0;
 	number = 0;
@@ -62,9 +50,9 @@ static int	validate_arg(char *arg)
 	return (SUCCESS);
 }
 
-static t_bool	is_valid_args(int argc, char **argv)
+static t_bool is_valid_args(int argc, char **argv)
 {
-	int	i;
+	int i;
 
 	i = 1;
 	while (i < argc)
@@ -76,7 +64,7 @@ static t_bool	is_valid_args(int argc, char **argv)
 	return (TRUE);
 }
 
-static void	print_usage(void)
+static void print_usage(void)
 {
 	printf("Error: Invalid arguments.\n\n");
 	printf("Usage: ./philo number_of_philosophers");
@@ -85,7 +73,7 @@ static void	print_usage(void)
 	printf(" greater than 0 and within the range of an int.\n");
 }
 
-int	initialize_args(t_args *args, int argc, char **argv)
+int initialize_args(t_args *args, int argc, char **argv)
 {
 	if (argc != 5 && argc != 6)
 		return (print_usage(), ERROR);

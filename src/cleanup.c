@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cleanup.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: evera <evera@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/07 13:23:22 by evera             #+#    #+#             */
-/*   Updated: 2026/02/07 13:23:27 by evera            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "philosophers.h"
 
-static void	free_table(t_table *table)
+static void free_table(t_table *table)
 {
 	if (table != NULL)
 	{
@@ -24,12 +12,12 @@ static void	free_table(t_table *table)
 	}
 }
 
-static void	destroy_mutexes(t_table *table)
+static void destroy_mutexes(t_table *table)
 {
-	int	i;
+	int i;
 
 	if (table == NULL)
-		return ;
+		return;
 	pthread_mutex_destroy(&table->display);
 	pthread_mutex_destroy(&table->monitor);
 	if (table->forks != NULL)
@@ -53,7 +41,7 @@ static void	destroy_mutexes(t_table *table)
 	}
 }
 
-void	cleanup(t_table *table)
+void cleanup(t_table *table)
 {
 	destroy_mutexes(table);
 	free_table(table);

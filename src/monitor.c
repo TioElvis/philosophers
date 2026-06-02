@@ -1,28 +1,15 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   monitor.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: evera <evera@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/07 13:23:53 by evera             #+#    #+#             */
-/*   Updated: 2026/02/07 13:23:58 by evera            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "philosophers.h"
 
-static t_bool	set_dead_philosopher(t_philo *philo)
+static t_bool set_dead_philosopher(t_philo *philo)
 {
-	t_table	*table;
-	long	current_time;
+	t_table *table;
+	long current_time;
 
 	table = philo->table;
 	current_time = gettimeofday_ms() - table->start_time;
 	pthread_mutex_lock(&philo->meal);
 	pthread_mutex_lock(&philo->sleep);
-	if (current_time - philo->last_meal_time > table->args.time_to_die
-		|| current_time - philo->last_sleep_time > table->args.time_to_die)
+	if (current_time - philo->last_meal_time > table->args.time_to_die || current_time - philo->last_sleep_time > table->args.time_to_die)
 	{
 		philo->state = DEAD;
 		print_state(philo, "died");
@@ -38,10 +25,10 @@ static t_bool	set_dead_philosopher(t_philo *philo)
 	return (FALSE);
 }
 
-static t_bool	all_philosophers_ate_enough(t_table *table)
+static t_bool all_philosophers_ate_enough(t_table *table)
 {
-	int	i;
-	int	philos_finished;
+	int i;
+	int philos_finished;
 
 	if (table->args.number_of_meals <= 0)
 		return (FALSE);
@@ -60,11 +47,11 @@ static t_bool	all_philosophers_ate_enough(t_table *table)
 	return (FALSE);
 }
 
-void	*monitor_routine(void *arg)
+void *monitor_routine(void *arg)
 {
-	int		i;
-	t_table	*table;
-	t_philo	*philo;
+	int i;
+	t_table *table;
+	t_philo *philo;
 
 	table = (t_table *)arg;
 	while (is_finished_dinner(table) == FALSE)
